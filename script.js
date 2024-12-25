@@ -1,6 +1,7 @@
 const itemForm = document.getElementById("item-form");
 const itemInput = document.getElementById("item-input");
 const itemList = document.getElementById("item-list");
+const clearItems = document.getElementById("clear");
 
 function createButton(classes) {
   let button = document.createElement("button");
@@ -36,13 +37,12 @@ itemForm.addEventListener("submit", (e) => {
   console.log("validate");
 });
 
+itemList.addEventListener("click", (e) => {
+  if (e.target.parentElement.classList.contains("remove-item")) {
+    e.target.parentElement.parentElement.remove();
+  }
+});
 
-
-
-itemList.addEventListener('click', (e)=>{
-    if((e.target.parentElement.classList.contains('remove-item'))){
-        e.target.parentElement.parentElement.remove()
-        
-    }
-    
+clearItems.addEventListener("click", ()=>{
+    itemList.innerHTML=""
 })
