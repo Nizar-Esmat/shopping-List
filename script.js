@@ -57,6 +57,11 @@ function additem(e) {
     itemtoEdit.classList.remove("edit-mode")
     itemtoEdit.remove();
     isEdit=false
+  }else{
+    if(checkDublicate(newItem)){
+      alert("this item is alredy exist")
+      return
+    }
   }
   additemtoDom(newItem);
   additemTolocal(newItem)
@@ -115,6 +120,14 @@ function removeItemFromStorge(item){
     chekUI()
   }
 
+
+}
+
+
+function checkDublicate(item){
+    const itemsFromStorage = getItemFromLocal();
+
+    return itemsFromStorage.includes(item)
 
 }
 itemForm.addEventListener("submit", additem);
